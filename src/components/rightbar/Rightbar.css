@@ -1,0 +1,87 @@
+.rightbar{
+    flex: 4;
+}
+.logo{
+    color: tomato;
+    margin-right: 10px;
+}
+.rightbarwrapper{
+    padding: 20px 10px 0 0;
+    
+}
+.birthdaycontainer{
+    display: flex;
+    align-items: center;
+}
+.adimage{
+    width: 100%;
+    
+    margin-top: 20px;
+}
+.onlinefriendlists{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.rightbartitle{
+    margin-top: 20px;
+}
+.profilerightbartitle{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.rightbarfollowingimage{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.profilerightbarinfo{
+    margin-bottom: 20px;
+}
+.profilerightbarinfoitem{
+    margin-bottom: 10px;
+
+}
+.key{
+    font-weight: 400;
+    font-size: 14px;
+    margin-right: 8px;
+    color:#555;
+}
+.value{
+    font-weight: 300;
+
+}
+.rightbarfollowing{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    cursor: pointer;
+}
+.rightbarfollowings{
+    display: flex;
+    flex-wrap: wrap;
+}
+.rightbarfollowbutton{
+background-color: #1872f2;
+color: white;
+padding: 8px;
+border: none;
+border-radius: 7px;
+display: flex;
+align-items: center;
+justify-self: center;
+cursor: pointer;
+gap: 5px;
+font-size: 16px;
+margin-bottom: 5px;
+margin-top: 5px;
+font-weight: 500;
+}
+.rightbarfollowbutton:hover{
+    transform: scale(1.1)
+}
