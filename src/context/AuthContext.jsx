@@ -12,9 +12,11 @@ import AuthReducer from "./AuthReducer"
 //     following:[],
 //     isAdmin:false   
 // }
+   const userData=localStorage.getItem('userDetails')
+    const userDataObj=JSON.parse(userData)
 
 const INITIAL_STATE={
-user:'',
+user:userDataObj,
 isFetching:false,
 error:false
 }

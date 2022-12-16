@@ -2,14 +2,20 @@ import React, { useContext } from 'react'
 import './Topbar.css'
 import {BsSearch} from 'react-icons/bs'
 import {BsFillPersonFill,BsChatFill} from 'react-icons/bs'
-import {MdOutlineNotifications} from 'react-icons/md'
-import {Link } from 'react-router-dom'
+import {MdOutlineNotifications,MdLogout} from 'react-icons/md'
+import {Link, } from 'react-router-dom'
 import {AuthContext} from '../../context/AuthContext'
+
 
 const PF=process.env.REACT_APP_PUBLIC_FOLDER
 
 function Topbar() {
     const {user}=useContext(AuthContext)
+    
+    const handleLogout=()=>{
+        localStorage.clear()
+       window.location.reload()
+          }
 
   return (
    
@@ -44,6 +50,9 @@ function Topbar() {
                     <div className="topbariconitems">
                         <MdOutlineNotifications />
                         <span className="notifications-badge badges">10</span>
+                    </div>
+                    <div className="topbariconitems">
+                        <MdLogout style={{fontSize:"18px"}} onClick={handleLogout}/>                       
                     </div>
                 </div>
                 <Link to ={`/profile/${user.username}`}>
