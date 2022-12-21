@@ -19,6 +19,11 @@ mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGODB_URL, () => {
   console.log("connected to database");
 });
+//To implement cross origin policy
+app.use((req,res,next)=>{
+  res.header("Access-Control-Allow-Credentials",true)
+  next()
+})
 
 app.use(
   cors({

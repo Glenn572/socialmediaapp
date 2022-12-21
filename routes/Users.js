@@ -4,7 +4,7 @@ const User = require("../models/Usermodel");
 
 //Update user
 
-router.put("/:id", async (req, res) => {
+
   // if(req.body.userId === req.params.id || req.body.isAdmin){
   // if(req.body.password){  //password is compulsory to update any details
   //     try {
@@ -13,13 +13,13 @@ router.put("/:id", async (req, res) => {
   //     } catch (error) {
   //         return res.status(500).json("Error in password area")
   //     }
+  router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
+    if(req.body.password){
     try {
-      const user = await User.findOneAndUpdate(
-        req.params.id,
-        {
-          $set: req.body,
-        },
+      const salt=await bcrypt.genSalt(5)
+        req.body.password=await bcrypt.hash(req.body.password,salt)
+      const user = await User.findByIdAndUpdate(req.params.id,{$set: req.body},
         {
           new: true,
         }
@@ -33,11 +33,11 @@ router.put("/:id", async (req, res) => {
   // else{
   //     return res.status(403).json("You can update only your account")
   // }
-});
+}});
 
 //Delete user
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",async (req, res) => {
   try {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
     res.status(200).json("Account has been deleted");
@@ -81,7 +81,7 @@ router.get("/friends/:userId", async (req, res) => {
 }); 
 //follow a user
 
-router.put("/:id/follow", async (req, res) => {
+router.put("/:id/follow",async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
       const user = await User.findById(req.params.id);
