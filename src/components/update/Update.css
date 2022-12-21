@@ -1,0 +1,34 @@
+.update{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 80%;
+    height: 80vh;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    z-index: 10;
+    -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+}
+input{
+    padding: 5px;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+   
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.coverphoto{
+    font-size: 24px;
+    margin: 10px 0;
+}

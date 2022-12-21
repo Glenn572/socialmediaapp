@@ -1,12 +1,15 @@
 import './Post.css'
 import {MdOutlineMoreVert} from 'react-icons/md'
-import {AiFillLike ,AiFillHeart} from 'react-icons/ai'
+import {AiFillLike ,AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
+import {BiCommentDetail} from 'react-icons/bi'
+import {RiShareForwardFill} from 'react-icons/ri'
 import { useState ,useEffect} from 'react'
 import axios from 'axios'
 import {format} from 'timeago.js'
 import {Link} from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import Comment from '../comment/Comment'
 
 const PF=process.env.REACT_APP_PUBLIC_FOLDER
 
@@ -15,6 +18,7 @@ function Post({post}) {
     const[isLiked,setIsLiked]=useState(false)
     const [user,setUser]=useState({})
     const {user:currentUser}=useContext(AuthContext)
+    const [commentopen,setCommentopen]=useState(false)
 
     // useEffect(()=>{
     //     setIsLiked(post.likes.includes(currentUser._id))
@@ -60,14 +64,24 @@ function Post({post}) {
             </div>
             <div className="postbottom">
                 <div className="postbottomleft">
-                    <AiFillLike className='like' />
-                    <AiFillHeart className='heart' onClick={handleLike}/>
+                    <div className='likes'>
+                 {
+                    isLiked ? <AiFillHeart className='heart' onClick={handleLike}/> : <AiOutlineHeart className='heart' onClick={handleLike}/>
+                  } 
+                    
                     <span  className='postlikecounter'>{like} likes</span>
-                </div>
-                <div className="postbottomright">
-                    <span className="postcommenttext">{post.comments} Comments</span>
-                </div>
-            </div>
+                    </div>
+                    <div className="likes" onClick={()=>setCommentopen(!commentopen)}>
+                    <span className="postcommenttext"><BiCommentDetail /> </span>
+                    <span>comments</span>
+                    </div>
+                    <div className='likes'>
+                        <span className='share'><RiShareForwardFill /></span>
+                        <span>Share</span>
+                    </div>        
+                </div>  
+                  </div>
+                  {commentopen && <Comment />}
         </div>
          
             </div>

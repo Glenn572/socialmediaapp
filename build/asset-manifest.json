@@ -1,13 +1,15 @@
 {
   "files": {
-    "main.css": "/socialmed/static/css/main.3d78c2e9.css",
-    "main.js": "/socialmed/static/js/main.7ebfd234.js",
+    "main.css": "/socialmed/static/css/main.48bf464a.css",
+    "main.js": "/socialmed/static/js/main.9f1fd488.js",
+    "static/media/pro1.jpg": "/socialmed/static/media/pro1.ba7c14cf1bcec785dda6.jpg",
+    "static/media/pro4.jpg": "/socialmed/static/media/pro4.a643db073ade4b6fa43f.jpg",
     "index.html": "/socialmed/index.html",
-    "main.3d78c2e9.css.map": "/socialmed/static/css/main.3d78c2e9.css.map",
-    "main.7ebfd234.js.map": "/socialmed/static/js/main.7ebfd234.js.map"
+    "main.48bf464a.css.map": "/socialmed/static/css/main.48bf464a.css.map",
+    "main.9f1fd488.js.map": "/socialmed/static/js/main.9f1fd488.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d78c2e9.css",
-    "static/js/main.7ebfd234.js"
+    "static/css/main.48bf464a.css",
+    "static/js/main.9f1fd488.js"
   ]
 }

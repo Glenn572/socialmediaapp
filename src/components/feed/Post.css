@@ -2,8 +2,9 @@
     width: 100%;
     border-radius: 10px;
     margin: 30px 0;
-    -webkit-box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.15); 
-box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+        -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+        box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
 }
 .postwrapper{
     padding: 10px;
@@ -36,11 +37,19 @@ box-shadow: 0px 0px 6px 6px rgba(0,0,0,0.15);
     margin-right: 10px;
     cursor: pointer;
 }
+.likes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 7px;
+}
 .heart{
-color: red;
 font-size: 24px;
 margin-right: 10px;
 cursor: pointer;
+margin-bottom: 7px;
+margin-left: 5px;
 }
 .postcenter{
     margin: 20px 0px;
@@ -59,14 +68,26 @@ cursor: pointer;
 .postbottomleft{
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.share{
+    cursor: pointer;
 }
 .postlikecounter{
     font-size: 14px;
     font-weight: 400;
 }
 .postcommenttext{
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 400;
+  margin-left: 5px;
+ 
+}
+.comments{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 .postbottomright{
     display: flex;

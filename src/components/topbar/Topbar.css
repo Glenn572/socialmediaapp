@@ -30,6 +30,9 @@
 }
 .topbaricons{
     display: flex;
+    align-items: center;
+    gap: 5px;
+   
     }
     .topbariconitems{
         margin-right: 14px;
@@ -89,4 +92,11 @@
 .chat-badge{
     cursor: pointer;
     
+}
+
+.profilelink{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }

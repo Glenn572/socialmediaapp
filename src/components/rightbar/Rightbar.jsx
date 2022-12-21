@@ -1,14 +1,16 @@
 import React from 'react'
 import './Rightbar.css'
-import {AiOutlineGift} from 'react-icons/ai'
 import Online from './online/Online'
 import {users} from '../../DummyData'
 import { useEffect,useState } from 'react'
 import axios from 'axios'
+import pro1 from '../../assests/pro1.jpg'
+import pro4 from '../../assests/pro4.jpg'
 import {Link} from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import {SlUserFollow,SlUserUnfollow} from 'react-icons/sl'
+import Update from '../update/Update'
 const PF=process.env.REACT_APP_PUBLIC_FOLDER
 
 const HomeRightbar =({user})=>{
@@ -17,13 +19,79 @@ const HomeRightbar =({user})=>{
     <>
      <div className="birthdaycontainer">
         <div className="birthday">
-        <AiOutlineGift className='logo' />
           <span className='birthdaytext'>
-            <b>Pablo Eschar</b> and <b>3 others </b> have a birthday today
+            Suggestions for you 
           </span>
+          <div className="rightbartitle">
+            <div className="user">
+                <div className="userinfo">
+<img className="suggestionimg"src={pro1} alt="" />
+<span>John Doe</span>
+                </div>
+                <div className='buttons'>
+                  <button>Follow</button>
+                  <button>Dismiss</button>
+                </div> 
+              </div>
+              <div className="user">
+                <div className="userinfo">
+<img className="suggestionimg"src={pro4} alt="" />
+<span>Jaden Smith</span>
+                </div>
+                <div className='buttons'>
+                  <button>Follow</button>
+                  <button>Dismiss</button>
+                </div> 
+              </div>
+         
         </div>
         </div>
-        <img crossorigin="anonymous" src={`${PF}ad.jpg`} alt="" className='adimage'/>
+        <div className='birthday'>
+          <span>Latest Activities</span>
+          <div className="activites">
+                <div className="userinfo">
+<img className="activityimg"src={pro1} alt="" />
+<p>
+<span>John Doe</span> sends you a request
+</p>
+<div className="time">
+<span className='time'>1 min ago</span></div>
+                </div>
+                 </div>
+                 <div className="activites">
+                <div className="userinfo">
+<img className="activityimg"src={pro1} alt="" />
+<p>
+<span>John Doe</span> liked your profile
+</p>
+<div className="time">
+<span >30 mins ago</span>
+</div>
+
+                </div>
+                 </div>
+                 <div className="activites">
+                <div className="userinfo">
+<img className="activityimg"src={pro1} alt="" />
+<p>
+<span>John Doe</span> liked a post
+</p>
+<div className="time">
+<span className='time'>1 hour ago</span></div>
+                </div>
+                 </div>
+                 <div className="activites">
+                <div className="userinfo">
+<img className="activityimg"src={pro1} alt="" />
+<p>
+<span>John Doe</span> unfollowed you
+</p>
+<div className="time">
+<span className='time'>2 hour ago</span></div>
+                </div>
+                 </div>
+        </div>
+        <div className="birthday">
         <h4 className='onlinefriendsheading mt-4'>Online Friends</h4>
         <div className="rightbartitle">
         <ul className="onlinefriendlists">
@@ -33,12 +101,16 @@ const HomeRightbar =({user})=>{
           
         </ul>
         </div>
+        </div>
+        </div>
+             
     </>
   )
 }
 
 const ProfileRightbar =({user})=>{
     const [friends,setFriends]=useState([])
+    const [openupdate,setOpenupdate]=useState(false)
     const {user:currentUser}=useContext(AuthContext)
     const [followed,setFollowed]=useState(currentUser.following.includes(user?._id))
 useEffect(()=>{
@@ -75,10 +147,13 @@ try {
     {
       user.username !==currentUser && (
         <button className='rightbarfollowbutton' onClick={handleClick}>
-          {followed ? "Unfollow" :"Follow"}
+          {followed ? "Following" :"Follow"}
           {followed ? <SlUserUnfollow /> : <SlUserFollow /> } </button>
       )
     }
+     <button onClick={()=>setOpenupdate(true)} className='updatebutton'>Update</button>
+      {openupdate && <Update setOpenupdate={setOpenupdate}/>}
+    <div className="profilecontainer">
     <h2 className='profilerightbartitle'> About</h2>
     <div className="profilerightbarinfo">
       <div className="profilerightbarinfoitem">
@@ -94,6 +169,8 @@ try {
         <span className="value">{user.relationship === 1 ? "Single" : user.relationship === 2 ? "In Relationship" :"Gang"}</span>
       </div>
     </div>
+    </div>
+    <div className='friendscontainer'>
     <h2 className="rightbarfriends">Friends</h2>
     <div className="rightbarfollowings">
       {friends.map(friend=>(
@@ -105,7 +182,7 @@ try {
  </Link>
       ))}
    
-        
+   </div>  
     </div>
     </>
   )

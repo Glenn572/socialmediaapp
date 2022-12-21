@@ -1,20 +1,24 @@
 import React, { useContext } from 'react'
 import './Topbar.css'
 import {BsSearch} from 'react-icons/bs'
-import {BsFillPersonFill,BsChatFill} from 'react-icons/bs'
-import {MdOutlineNotifications,MdLogout} from 'react-icons/md'
-import {Link, } from 'react-router-dom'
+import {BsChatFill} from 'react-icons/bs'
+import {MdLogout} from 'react-icons/md'
+import {Link, useNavigate, } from 'react-router-dom'
 import {AuthContext} from '../../context/AuthContext'
+import axios from 'axios'
 
 
 const PF=process.env.REACT_APP_PUBLIC_FOLDER
 
 function Topbar() {
     const {user}=useContext(AuthContext)
-    
-    const handleLogout=()=>{
+    const navigate=useNavigate()
+    const handleLogout=async()=>{
+        await axios.post("http://localhost:8800/api/auth/logout")
         localStorage.clear()
+        navigate('/login')
        window.location.reload()
+    
           }
 
   return (
@@ -33,31 +37,31 @@ function Topbar() {
             </div>
             <div className="topbar-right">
                 <div className="topbarlinks">
+                <Link to='/' style={{textDecoration:"none", color:"white"}}> 
                    <span className="topbarlink">Home</span>
+                   </Link>
+                   <Link to='/' style={{textDecoration:"none", color:"white"}}> 
                    <span className="topbarlink">Timeline</span>
+                   </Link>
                 </div>
                 <div className="topbaricons">
-                    <div className="topbariconitems">
-                        <BsFillPersonFill />
-                        <span className="person-badge badges">3</span>
-                    </div>
+                    
                     <div className="topbariconitems">
                     <Link  to ="/msg"  style={{color:"white"}}>
                         <BsChatFill />
                         <span className="chat-badge badges" >2</span>
                         </Link>
                     </div>
-                    <div className="topbariconitems">
-                        <MdOutlineNotifications />
-                        <span className="notifications-badge badges">10</span>
-                    </div>
+                    
                     <div className="topbariconitems">
                         <MdLogout style={{fontSize:"18px"}} onClick={handleLogout}/>                       
                     </div>
                 </div>
-                <Link to ={`/profile/${user.username}`}>
+                <div className='profilecontianer'>
+                <Link to ={`/profile/${user.username}`} className="profilelink" style={{textDecoration:"none",color:"white"}}>
                 <img crossorigin="anonymous" src={`${PF}${user.profilePicture}`} alt="" className='topbar-image'/>
-                </Link>
+                <span className='profilename'>{user.username}</span></Link>
+                </div>
                 
             </div>
         </div>

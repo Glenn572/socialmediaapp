@@ -6,10 +6,13 @@ import Feed from '../../components/feed/Feed'
 import Rightbar from '../../components/rightbar/Rightbar'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
 
 const PF=process.env.REACT_APP_PUBLIC_FOLDER
 function Profile() {
     const [user,setUser]=useState({})
+    // const {user:currentUser}= useContext(AuthContext)
     const username=useParams().username
 
     useEffect(()=>{
@@ -22,9 +25,7 @@ function Profile() {
    
   return (
     <>
-       
         <Topbar />
-        
         <div className="profile">
         <Sidebar />
 <div className="profileright">
